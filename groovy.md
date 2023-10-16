@@ -1,8 +1,8 @@
 # Groovy
  There are 2 editors that come with groovy by default 
- - GroovyShell : run groovysh 
+ - GroovyShell : run ```groovysh ``` 
  ![Alt text](groovy/images/groovysh.png)
- - GroovyConsole: run groovyConsole  
+ - GroovyConsole: run ```groovyConsole```  
  ![Alt text](groovy/images/groovyconsole.png)
 
 
