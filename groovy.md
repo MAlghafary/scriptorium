@@ -3,7 +3,7 @@
  - GroovyShell : run groovysh 
  ![Alt text](groovy/images/groovysh.png)
  - GroovyConsole: run groovyConsole  
- ![Alt text](image.png)
+ ![Alt text](groovy/images/groovyconsole.png)
 
 
 ### HelloWorld in groovy 
