@@ -17,7 +17,7 @@ println 'Welcome To Groovy'
 ### The assert statement 
 assert can be used in test cases instead of junit or assertJ assertions , it gives a nice graph of details if the statment is false 
 
-```
+```groovy
 int x = 3
 int y = 4
 assert 7 == x + y + 1 
@@ -37,7 +37,7 @@ assert 7 == x + y + 1
 ```
 ### Automactic imports 
 In groovy, the below imports are added by groovy 
-```
+```groovy
 import java.lang.*
 import java.util.*
 import java.io.*
@@ -52,7 +52,7 @@ This is done because the classes from these packages are most commonly used. By 
 ### The def keyword 
 Groovy is optionally typed, if you declare a variable of type String or Date or Employee , then you can't assign another type  
 
-```
+```groovy
 int x = 3 
 x = 'abc' 
  
@@ -63,7 +63,7 @@ org.codehaus.groovy.runtime.typehandling.GroovyCastException: Cannot cast object
 
 ```
 def can be used to create untyped variable , the type will be determined at runtime 
-```
+```groovy
 def x = 1 
 println x.getClass() 
 x = 'abc' 
@@ -75,7 +75,7 @@ class java.lang.String
 ### Integer and Floating point types 
 - No primitives (all are wrapper classes)
 - floating values uses BigDecimal by default 
-```
+```groovy
 println 3.getClass() 
 println 777777777777777.getClass() 
 println 88888888887878788788788788787878.getClass() 
@@ -88,4 +88,43 @@ class java.math.BigDecimal
 ```
 
 ### Operator Overloading 
+Groovy allows you to overload the various operators so that they can be used with your own classes. 
 
+```groovy
+class Bucket{
+  int size 
+  
+  Bucket(int size) {this.size = size}
+  
+  Bucket plus(Bucket other) {
+    return new Bucket(this.size + other.size);
+  }
+}
+
+def b1 = new Bucket(4)
+def b2 = new Bucket(11) 
+def b3 = b1 + b2
+println b3.size
+```
+https://groovy-lang.org/operators.html#Operator-Overloading:~:text=Here%20is%20a%20complete%20list%20of%20the%20operators%20and%20their%20corresponding%20methods%3A
+
+### String and Groovy Strings  
+Groovy supports multiple types of strings 
+- Java Strings (single quotes)
+- GString (double quotes) : supports interplation 
+- Multiline strings (3 quotes , 3 double quotes)
+- Slashy strings : create Reqular expressions 
+```groovy
+def s = 'this is a String ${1 + 2}'
+println s
+s = "this is a String ${1 + 2}" 
+println s
+s = '''
+select * from books b
+where b.title = 'the west';
+'''
+println s
+def zip =  /\d{5}(-\d)?/
+assert '12345' ==~ zip
+
+```
