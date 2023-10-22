@@ -128,3 +128,62 @@ def zip =  /\d{5}(-\d)?/
 assert '12345' ==~ zip
 
 ```
+
+### POGOs
+- In groovy , by default , attributes are private , methods are public and classes are public . 
+- Getters and Setters are generated for you 
+- property access ```p.last ``` will call the setter/getter
+- If you need a custom getter/setter you can provide them 
+- By default you get a map based constructor
+- Groovy won't repalce something that is alrady generated 
+
+```groovy
+
+class Person {
+   String first
+   String last
+   
+   void setLast(String last) {
+     println 'Inside setLast'
+     this.last = last
+   }
+     
+}
+
+Person p = new Person()
+p.setFirst('David')
+p.last = 'Ortiz'
+println "${p.first} ${p.last}"   
+
+Person p2 = new Person(first:'Hanley' , last :'Ramirez')
+println "${p2.first} ${p2.last}"
+```
+
+### ASTs
+- You can add @ToString AST to autogenerate a toString implementation  
+- You can use @EqualsAndHashCode also to add equals and hashcode 
+- @TupleConstructor : adds a constructor that takes argments in order 
+- @Cononical = @ToString + @EqualsAndHashCode + @TupleConstructor  
+```groovy
+
+import groovy.transform.*
+
+@ToString @EqualsAndHashCode 
+@TupleConstructor 
+class Person {
+   String first
+   String last     
+}
+
+Person p1 = new Person(first :'Dustin' , last: 'Pedoria')
+Person p2 = new Person(first: 'Dustin' , last: 'Pedoria')
+Person p3 = new Person(first: 'David', last: 'Ortiz')
+Person p4 = new Person('Dustin' , 'Pedoria')
+
+println p1 == p2
+println p1 != p3
+Set people = [p1,p2,p3]
+println people.size()
+```
+
+ 
