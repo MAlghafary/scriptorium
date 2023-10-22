@@ -185,5 +185,40 @@ println p1 != p3
 Set people = [p1,p2,p3]
 println people.size()
 ```
+### Ranges
+- Groovy provides range operator (..) to create ranges of object.
+- Range operator works for all objects which implements Comparable and which provide some means to determine next and previous values
 
- 
+```groovy
+Range r = 1..10
+println r.from
+println r.to
+println r.contains(10)
+
+r = 1..<10 // open range 
+println r.contains(10)
+```
+
+```groovy
+import java.time.LocalTime
+
+Range timeRange = LocalTime.now()..LocalTime.now().plusHours(5)
+println timeRange.from
+println timeRange.to
+```
+### Lists 
+- Groovy uses a native syntax for lists  
+```groovy
+List nums = [3,1,4,1,5,9,2,6,5]
+println nums 
+println nums.class.name
+println nums + [19,19]
+println nums << [19,20]
+
+def nums2 = [3 , [1,4, [1,1]],5]
+println nums2.flatten()
+println nums2
+println nums2.flatten() - 1
+```
+
+
